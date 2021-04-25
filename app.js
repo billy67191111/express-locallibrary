@@ -21,7 +21,8 @@ app.use(helmet());
 var mongoose = require('mongoose');
 
 //Set up default mongoose connection
-var mongoDB = 'mongodb+srv://librarystaff:librarystaff@cluster0.yquuh.mongodb.net/express-locallibrary?retryWrites=true&w=majority';
+var dev_db_url = 'mongodb+srv://librarystaff:librarystaff@cluster0.yquuh.mongodb.net/express-locallibrary?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Get the default connection
